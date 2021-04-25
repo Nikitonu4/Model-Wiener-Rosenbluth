@@ -1,1 +1,8 @@
 @import "global";
+
+.cells {
+  #grid {
+    position: absolute;
+    z-index: 1;
+  }
+}

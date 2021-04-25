@@ -11,6 +11,7 @@ function scripts(){ // работа с js файлами
     return src([
         'node_modules/jquery/dist/jquery.js', //выбираем jquery библиотеку
         'app/js/main.js', // выбираем основной файл main.js
+        'app/js/cellularAutomaton.js', // класс клеточного автомата
          // выбираем js для фона
     ])
   .pipe(concat('main.min.js')) // переименовывем файл в min.js
