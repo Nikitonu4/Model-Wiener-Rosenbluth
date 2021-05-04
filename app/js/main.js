@@ -81,7 +81,6 @@ while (t != 100) {
       if (y[i][j] >= 1 && y[i][j] <= r) {
         ctx.beginPath();
         ctx.arc(6 * i - 10, 1000 - 6 * j, 3, 2 * Math.PI, true);
-        // ctx.lineWidth = 1;
         ctx.strokeStyle = color;
         ctx.fill();
         ctx.stroke();
