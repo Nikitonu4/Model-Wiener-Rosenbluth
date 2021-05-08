@@ -63,6 +63,7 @@ function build() {
       "app.fonts/**/*",
       "app/js/main.min.js",
       "app/*.html",
+      "app/img/*",
     ],
     { base: "app" }
   ) // базовая директория (чтобы правильно пути были)
