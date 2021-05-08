@@ -1,19 +1,75 @@
 "use strict;";
-// ПОКОЙ, ВОЗБУЖДЕНИЕ, РЕФРАКТЕРНОСТЬ
-// Элемент в покое, если y[i][j] == 0
-// Рефрактерность - элемент не может возбуждаться, через
-// const N = 50;
-// const M = 50;
-// const s = 13; // через s состояний элемент возвращается в состояние покоя
-// const r = 6; // Рефрактерность после r состояний(до r - элемент возбужден)
-// const h = 5; // пороговое значение концентрации активатора, после него элемент возбуждается
 
-// через s шагов после возбуждения элемент возвращается в состояние покоя.
-// из s в состояние покоя => концентрация активатора u[i][j] = 0
-// s>r !!!!!!!!!!!!
+// обработка перемещения панели управления
+dragElement(document.querySelector(".control__panel"));
 
-// есть возбужденный сосед => концентрация элемента u[i][j]++
-// Если l ближайших соседей возбуждены, то на соот- ветствующем шаге к предыдущему значению концентрации активатора
-// прибавляется число возбужденных соседей
+function dragElement(el) {
+  let pos1 = 0;
+  let pos2 = 0;
+  let pos3 = 0;
+  let pos4 = 0;
+  if (document.querySelector(`.${el.className}-header`)) {
+    // если присутствует, заголовок - это место, откуда вы перемещаете DIV:
+    document.querySelector(
+      `.${el.className}-header`
+    ).onmousedown = dragMouseDown;
+  } else {
+    // в противном случае переместите DIV из любого места внутри DIV:
+    el.onmousedown = dragMouseDown;
+  }
 
+  function dragMouseDown(e) {
+    e = e || window.event;
+    e.preventDefault();
+    // получить положение курсора мыши при запуске:
+    pos3 = e.clientX;
+    pos4 = e.clientY;
+    document.onmouseup = closeDragElement;
+    // вызов функции при каждом перемещении курсора:
+    document.onmousemove = elementDrag;
+  }
+
+  function elementDrag(e) {
+    e = e || window.event;
+    e.preventDefault();
+    // вычислить новую позицию курсора:
+    pos1 = pos3 - e.clientX;
+    pos2 = pos4 - e.clientY;
+    pos3 = e.clientX;
+    pos4 = e.clientY;
+    // установите новое положение элемента:
+    el.style.top = `${el.offsetTop - pos2}px`;
+    el.style.left = `${el.offsetLeft - pos1}px`;
+  }
+
+  function closeDragElement() {
+    // остановка перемещения при отпускании кнопки мыши:
+    document.onmouseup = null;
+    document.onmousemove = null;
+  }
+}
+// s шагов до покоя
+// r состояний возбуждения
+// h пороговая концентрация активатора
+// размер клеток
+// Количество клеток по вертикали
+// Количество клеток по горизонтали
+// Интервал шага(в мс)
+// Шаг
+// запуск/стоп
+// сбросить все
+
+// RadioButtonы
+/*
+1) реакция Белоусова-Жаботинского
+2) одиночная волна
+3) однорукавная волна
+4) двурукавная волна
+
+
+
+5) 1 осциллятор
+6) 2 осциллятор
+7) препятствие - checkbox
+*/
 new CellularAutomaton();

@@ -1,20 +1,111 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Модель Винера-Розенблюнта</title>
-    <link rel="stylesheet" href="css/style.min.css" />
-  </head>
 
-  <body>
-    <div class="cells">
-      <canvas id="grid" width="2000" height="1000"></canvas>
-      <canvas id="canvas" width="2000" height="1000"></canvas>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Модель Винера-Розенблюнта</title>
+  <link rel="stylesheet" href="css/style.min.css" />
+</head>
+
+<body>
+  <div class="control__panel">
+
+    <div class="control__panel-header">
+      <h2>Модель
+        Винера-Розенблюта </h2><img class=move src="img/move.svg" width="20" height="20" alt="Перемещать">
     </div>
-    <!-- <script src="js/cellularAutomaton.js"></script>
+    <div class="control__panel-container">
+      <form class="control__panel-form" action="">
 
-    <script src="js/main.js"></script> -->
-    <script src="js/main.min.js"></script>
-  </body>
+        <div class="control__panel-input">
+          <p>Сетка</p>
+          <li class="tg-list-item">
+            <input class="tgl tgl-flat" id="cb4" type="checkbox" />
+            <label class="tgl-btn" for="cb4"></label>
+          </li>
+        </div>
+
+        <div class="control__panel-input">
+          <p>s шагов до покоя</p>
+          <input class="input-form s" value=13 type="text" placeholder="13" />
+        </div>
+        <div class="control__panel-input">
+          <p>r состояний возбуждения</p>
+          <input class="input-form r" value=6 type="text" placeholder="13" />
+        </div>
+        <div class="control__panel-input">
+          <p>h пороговая концентрация активатора</p>
+          <input class="input-form h" value=5 type="text" placeholder="13" />
+        </div>
+        <div class="control__panel-input">
+          <p>размер клеток</p>
+          <input class="input-form cell-size" value=8 type="text" placeholder="13" />
+        </div>
+        <div class="control__panel-input">
+          <p>Количество клеток по вертикали</p>
+          <input class="input-form cell-size cellsH" value=100 type="text" placeholder="13" />
+        </div>
+        <div class="control__panel-input">
+          <p>Количество клеток по горизонтали</p>
+          <input class="input-form cell-size cellsW" value=100 type="text" placeholder="13" />
+        </div>
+        <div class="control__panel-input">
+          <p>Интервал шага(в мс)</p>
+          <input class="input-form cell-size time" value=8 type="text" placeholder="13" />
+        </div>
+        <div class="control__panel-radiogroup">
+          <div class="wrapper">
+            <input class="state" type="radio" name="app" id="a" value="a">
+            <label class="label" for="a">
+              <div class="indicator"></div>
+              <span class="text">реакция Белоусова-Жаботинского</span>
+            </label>
+          </div>
+          <div class="wrapper">
+            <input class="state" type="radio" name="app" id="b" value="b">
+            <label class="label" for="b">
+              <div class="indicator"></div>
+              <span class="text">одиночная волна</span>
+            </label>
+          </div>
+          <div class="wrapper">
+            <input class="state" type="radio" name="app" id="c" value="c">
+            <label class="label" for="c">
+              <div class="indicator"></div>
+              <span class="text">однорукавная волна</span>
+            </label>
+          </div>
+          <div class="wrapper">
+            <input class="state" type="radio" name="app" id="d" value="d">
+            <label class="label" for="d">
+              <div class="indicator"></div>
+              <span class="text">двурукавная волна</span>
+            </label>
+          </div>
+        </div>
+        <div class="control__panel-buttons">
+          <input class="button hover" type="button" value="Шаг" />
+          <input class="button hover" type="button" value="Запуск" />
+          <input class="button hover" type="button" value="Сбросить" />
+        </div>
+
+      </form>
+    </div>
+  </div>
+
+  <div class="cells">
+
+    <div class="cells-wrapper">
+      <canvas id="grid" width="500" height="500"></canvas>
+      <canvas id="canvas" width="500" height="500"></canvas>
+    </div>
+
+  </div>
+  <script src="js/cellularAutomaton.js"></script>
+
+  <script src="js/main.js"></script>
+  <!-- <script src="js/main.min.js"></script> -->
+</body>
+
 </html>
