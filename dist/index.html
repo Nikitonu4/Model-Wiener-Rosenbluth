@@ -10,18 +10,16 @@
 
 <body>
   <div class="control__panel">
-
     <div class="control__panel-header">
       <h2>Модель
         Винера-Розенблюта </h2><img class=move src="img/move.svg" width="20" height="20" alt="Перемещать">
     </div>
     <div class="control__panel-container">
       <form class="control__panel-form" action="">
-
         <div class="control__panel-input">
           <p>Сетка</p>
           <li class="tg-list-item">
-            <input class="tgl tgl-flat" id="cb4" type="checkbox" />
+            <input class="tgl tgl-flat" id="cb4" type="checkbox" checked />
             <label class="tgl-btn" for="cb4"></label>
           </li>
         </div>
@@ -44,15 +42,15 @@
         </div>
         <div class="control__panel-input">
           <p>Количество клеток по вертикали</p>
-          <input class="input-form cell-size cellsH" value=100 type="text" placeholder="13" />
+          <input class="input-form cellsH" value=100 type="text" placeholder="13" />
         </div>
         <div class="control__panel-input">
           <p>Количество клеток по горизонтали</p>
-          <input class="input-form cell-size cellsW" value=100 type="text" placeholder="13" />
+          <input class="input-form cellsW" value=100 type="text" placeholder="13" />
         </div>
         <div class="control__panel-input">
           <p>Интервал шага(в мс)</p>
-          <input class="input-form cell-size time" value=8 type="text" placeholder="13" />
+          <input class="input-form time" value=8 type="text" placeholder="13" />
         </div>
         <div class="control__panel-radiogroup">
           <div class="wrapper">
@@ -84,10 +82,25 @@
             </label>
           </div>
         </div>
+        <div class="control__panel-checkboxes">
+          <div class="control__panel-checkboxes-elem">
+            <input type="checkbox" class="custom-checkbox" id="1osc" name="1osc" value="no">
+            <label for="1osc">1 осциллятор</label>
+          </div>
+          <div class="control__panel-checkboxes-elem">
+            <input type="checkbox" class="custom-checkbox" id="2osc" name="2osc" value="no">
+            <label for="2osc">2 осциллятор</label>
+          </div>
+          <div class="control__panel-checkboxes-elem">
+            <input type="checkbox" class="custom-checkbox" id="obsticle" name="obsticle" value="no">
+            <label for="obsticle">препятствие</label>
+          </div>
+
+        </div>
         <div class="control__panel-buttons">
-          <input class="button hover" type="button" value="Шаг" />
-          <input class="button hover" type="button" value="Запуск" />
-          <input class="button hover" type="button" value="Сбросить" />
+          <input class="button hover step" type="button" value="Шаг" />
+          <input class="button hover start" type="button" value="Запуск" />
+          <input class="button hover reset" type="button" value="Сбросить" />
         </div>
 
       </form>
@@ -102,10 +115,10 @@
     </div>
 
   </div>
-  <script src="js/cellularAutomaton.js"></script>
+  <!-- <script src="js/cellularAutomaton.js"></script> -->
 
-  <script src="js/main.js"></script>
-  <!-- <script src="js/main.min.js"></script> -->
+  <!-- <script src="js/main.js"></script> -->
+  <script src="js/main.min.js"></script>
 </body>
 
 </html>
