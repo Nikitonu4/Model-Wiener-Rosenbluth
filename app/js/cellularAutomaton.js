@@ -20,22 +20,29 @@
 // прибавляется число возбужденных соседей
 
 class CellularAutomaton {
-  constructor(s = 13, r = 6, h = 5, cellSize = 5) {
+  constructor(
+    s = 13,
+    r = 6,
+    h = 5,
+    cellSize = 5,
+    cellsH = 200,
+    cellsW = 200,
+    time = 5
+  ) {
     this.s = s;
     this.r = r;
     this.h = h;
+    this.cellSize = cellSize; // размер клетки
+    this.numberHeightCells = cellsH; // количество клеток по высоте
+    this.numberWidthCells = cellsW; // количество клеток по ширине
+    this.time = time;
+    this.t = 0;
+
+    this.grid = document.getElementById("grid").getContext("2d"); // канвас для сетки
+    this.canvas = document.getElementById("canvas").getContext("2d");
     this.y = [];
     this.yy = [];
     this.u = [];
-    this.cellSize = cellSize;
-    this.t = 0;
-
-    this.cellSize = cellSize; // размер клетки
-    this.grid = document.getElementById("grid").getContext("2d"); // канвас для сетки
-    this.canvas = document.getElementById("canvas").getContext("2d");
-
-    this.numberHeightCells = 200; // количество клеток по высоте
-    this.numberWidthCells = 200; // количество клеток по ширине
 
     this.setSizeCanvases();
     this.init();
@@ -69,7 +76,6 @@ class CellularAutomaton {
 
     this.canvas.canvas.height = height * this.cellSize;
     this.canvas.canvas.width = width * this.cellSize;
-    console.log(this.canvas.canvas.width);
   }
 
   init() {
@@ -201,7 +207,7 @@ class CellularAutomaton {
     this.step();
     setTimeout(() => {
       this.main();
-    }, 5);
+    }, this.time);
   }
 
   // реакция Белоусова-Жаботинского

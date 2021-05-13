@@ -1,5 +1,18 @@
 "use strict;";
 
+const controlPanel = document.querySelector(".control__panel");
+const grid = document.querySelector("#cb4");
+const s = document.querySelector(".s");
+const r = document.querySelector(".r");
+const h = document.querySelector(".h");
+const cellSize = document.querySelector(".cell-size");
+const cellsH = document.querySelector(".cellsH");
+const cellsW = document.querySelector(".cellsW");
+const time = document.querySelector(".time");
+// const belousov =
+const step = document.querySelector(".step");
+const start = document.querySelector(".start");
+const reset = document.querySelector(".reset");
 // обработка перемещения панели управления
 function dragElement(el) {
   let pos1 = 0;
@@ -46,6 +59,31 @@ function dragElement(el) {
   }
 }
 
-dragElement(document.querySelector(".control__panel"));
+dragElement(controlPanel);
 
-new CellularAutomaton();
+grid.addEventListener("click", () => {
+  document.querySelector("#grid").hidden = grid.checked ? false : true;
+});
+
+start.addEventListener("click", () => {
+  automat.clearCanvas();
+  automat = new CellularAutomaton(
+    s.value,
+    r.value,
+    h.value,
+    cellSize.value,
+    cellsH.value,
+    cellsW.value,
+    time.value
+  );
+});
+
+let automat = new CellularAutomaton(
+  s.value,
+  r.value,
+  h.value,
+  cellSize.value,
+  cellsH.value,
+  cellsW.value,
+  time.value
+);
