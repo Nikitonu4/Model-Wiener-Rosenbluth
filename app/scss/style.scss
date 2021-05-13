@@ -47,11 +47,11 @@ body {
 .control {
   &__panel {
     position: absolute;
-    right: 20%;
+    right: 15%;
     top: 5%;
     z-index: 10;
-    width: 500px;
-    height: 850px;
+    width: 30%;
+    height: 85%;
     border: 1px solid white; /* Параметры границы */
     box-shadow: 6px 6px 11px -5px rgba(36, 35, 20, 0.64);
     border-radius: 30px;
@@ -64,7 +64,7 @@ body {
         justify-content: space-between;
       }
       align-items: center;
-      margin-top: 20px;
+      margin-top: 10px;
       p {
         margin-right: 10px;
       }
@@ -161,7 +161,7 @@ body {
     &-buttons {
       display: flex;
       justify-content: space-between;
-      margin: 20px;
+      margin: 30px 20px;
       input.button {
         outline: none;
         width: 30%;
@@ -199,12 +199,12 @@ body {
         display: inline-flex;
         align-items: center;
         cursor: pointer;
-        color: #000;
       }
 
       .text {
+        color: #000;
         margin-left: 16px;
-        opacity: 0.6;
+        font-weight: 400;
         transition: opacity 0.2s linear, transform 0.2s ease-out;
       }
 
@@ -233,7 +233,7 @@ body {
       }
 
       .indicator::after {
-        background-color: #ecf0f3;
+        background-color: #e0bf4a;
         box-shadow: -4px -2px 4px 0px #fff, 4px 2px 8px 0px #d1d9e6;
         transform: scale3d(1, 1, 1);
         transition: opacity 0.25s ease-in-out, transform 0.25s ease-in-out;
@@ -253,6 +253,65 @@ body {
         opacity: 1;
       }
     }
+    &-checkboxes {
+      margin-top: 10px;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      &-elem {
+        margin-right: 10px;
+        .custom-checkbox {
+          position: absolute;
+          z-index: -1;
+          opacity: 0;
+        }
+        .custom-checkbox + label {
+          display: inline-flex;
+          align-items: center;
+          user-select: none;
+        }
+        .custom-checkbox + label::before {
+          content: "";
+          display: inline-block;
+          width: 1.5em;
+          height: 1.5em;
+          flex-shrink: 0;
+          flex-grow: 0;
+          border: 1px solid #adb5bd;
+          border-radius: 0.25em;
+          margin-right: 0.5em;
+          background-repeat: no-repeat;
+          background-position: center center;
+          background-size: 50% 50%;
+        }
+        .custom-checkbox:checked + label::before {
+          border-color: #0b76ef;
+          background-color: #0b76ef;
+          background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%23fff' d='M6.564.75l-3.59 3.612-1.538-1.55L0 4.26 2.974 7.25 8 2.193z'/%3e%3c/svg%3e");
+        }
+        /* стили при наведении курсора на checkbox */
+        .custom-checkbox:not(:disabled):not(:checked) + label:hover::before {
+          border-color: #b3d7ff;
+        }
+        /* стили для активного состояния чекбокса (при нажатии на него) */
+        .custom-checkbox:not(:disabled):active + label::before {
+          background-color: #b3d7ff;
+          border-color: #b3d7ff;
+        }
+        /* стили для чекбокса, находящегося в фокусе */
+        .custom-checkbox:focus + label::before {
+          box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+        }
+        /* стили для чекбокса, находящегося в фокусе и не находящегося в состоянии checked */
+        .custom-checkbox:focus:not(:checked) + label::before {
+          border-color: #80bdff;
+        }
+        /* стили для чекбокса, находящегося в состоянии disabled */
+        .custom-checkbox:disabled + label::before {
+          background-color: #e9ecef;
+        }
+      }
+    }
   }
 
   &__panel-header {
@@ -266,7 +325,6 @@ body {
       position: absolute;
       right: 10px;
       top: 10px;
-      color: #000;
     }
   }
 }

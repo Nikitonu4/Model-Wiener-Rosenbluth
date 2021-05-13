@@ -1,8 +1,6 @@
 "use strict;";
 
 // обработка перемещения панели управления
-dragElement(document.querySelector(".control__panel"));
-
 function dragElement(el) {
   let pos1 = 0;
   let pos2 = 0;
@@ -10,9 +8,8 @@ function dragElement(el) {
   let pos4 = 0;
   if (document.querySelector(`.${el.className}-header`)) {
     // если присутствует, заголовок - это место, откуда вы перемещаете DIV:
-    document.querySelector(
-      `.${el.className}-header`
-    ).onmousedown = dragMouseDown;
+    document.querySelector(`.${el.className}-header`).onmousedown =
+      dragMouseDown;
   } else {
     // в противном случае переместите DIV из любого места внутри DIV:
     el.onmousedown = dragMouseDown;
@@ -48,28 +45,7 @@ function dragElement(el) {
     document.onmousemove = null;
   }
 }
-// s шагов до покоя
-// r состояний возбуждения
-// h пороговая концентрация активатора
-// размер клеток
-// Количество клеток по вертикали
-// Количество клеток по горизонтали
-// Интервал шага(в мс)
-// Шаг
-// запуск/стоп
-// сбросить все
 
-// RadioButtonы
-/*
-1) реакция Белоусова-Жаботинского
-2) одиночная волна
-3) однорукавная волна
-4) двурукавная волна
+dragElement(document.querySelector(".control__panel"));
 
-
-
-5) 1 осциллятор
-6) 2 осциллятор
-7) препятствие - checkbox
-*/
 new CellularAutomaton();

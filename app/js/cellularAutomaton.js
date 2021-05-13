@@ -20,7 +20,7 @@
 // прибавляется число возбужденных соседей
 
 class CellularAutomaton {
-  constructor(s = 13, r = 6, h = 5, cellSize = 10) {
+  constructor(s = 13, r = 6, h = 5, cellSize = 5) {
     this.s = s;
     this.r = r;
     this.h = h;
@@ -34,16 +34,16 @@ class CellularAutomaton {
     this.grid = document.getElementById("grid").getContext("2d"); // канвас для сетки
     this.canvas = document.getElementById("canvas").getContext("2d");
 
-    this.numberHeightCells = 100; // количество клеток по высоте
-    this.numberWidthCells = 100; // количество клеток по ширине
+    this.numberHeightCells = 200; // количество клеток по высоте
+    this.numberWidthCells = 200; // количество клеток по ширине
 
     this.setSizeCanvases();
     this.init();
     this.createNullArrays();
 
     // this.oneWave();
-    // this.wavesBelousovZhabotinsky();
-    this.singleSleeveWave();
+    this.wavesBelousovZhabotinsky();
+    // this.singleSleeveWave();
     // this.doubleSleeveWave();
     this.main();
   }
@@ -69,6 +69,7 @@ class CellularAutomaton {
 
     this.canvas.canvas.height = height * this.cellSize;
     this.canvas.canvas.width = width * this.cellSize;
+    console.log(this.canvas.canvas.width);
   }
 
   init() {
@@ -84,7 +85,6 @@ class CellularAutomaton {
     this.grid.beginPath();
     const widthGrid = this.numberWidthCells * this.cellSize;
     const heightGrid = this.numberHeightCells * this.cellSize;
-
     /*
     задаю параметры сетки
     */

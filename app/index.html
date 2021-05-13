@@ -10,14 +10,12 @@
 
 <body>
   <div class="control__panel">
-
     <div class="control__panel-header">
       <h2>Модель
         Винера-Розенблюта </h2><img class=move src="img/move.svg" width="20" height="20" alt="Перемещать">
     </div>
     <div class="control__panel-container">
       <form class="control__panel-form" action="">
-
         <div class="control__panel-input">
           <p>Сетка</p>
           <li class="tg-list-item">
@@ -83,6 +81,21 @@
               <span class="text">двурукавная волна</span>
             </label>
           </div>
+        </div>
+        <div class="control__panel-checkboxes">
+          <div class="control__panel-checkboxes-elem">
+            <input type="checkbox" class="custom-checkbox" id="1osc" name="1osc" value="no">
+            <label for="1osc">1 осциллятор</label>
+          </div>
+          <div class="control__panel-checkboxes-elem">
+            <input type="checkbox" class="custom-checkbox" id="2osc" name="2osc" value="no">
+            <label for="2osc">2 осциллятор</label>
+          </div>
+          <div class="control__panel-checkboxes-elem">
+            <input type="checkbox" class="custom-checkbox" id="obsticle" name="obsticle" value="no">
+            <label for="obsticle">препятствие</label>
+          </div>
+
         </div>
         <div class="control__panel-buttons">
           <input class="button hover" type="button" value="Шаг" />
