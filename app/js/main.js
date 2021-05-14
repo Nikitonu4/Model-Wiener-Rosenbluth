@@ -9,10 +9,48 @@ const cellSize = document.querySelector(".cell-size");
 const cellsH = document.querySelector(".cellsH");
 const cellsW = document.querySelector(".cellsW");
 const time = document.querySelector(".time");
-// const belousov =
+
+// const belousov = document.querySelector("#belousov");
+// const onewave = document.querySelector("#onewave");
+// const singleSlaveWave = document.querySelector("#single-slave-wave");
+// const doubleSlaveWave = document.querySelector("#double-slave-wave");
+
 const step = document.querySelector(".step");
 const start = document.querySelector(".start");
 const reset = document.querySelector(".reset");
+let resetFlag = false;
+
+let automat = new CellularAutomaton(
+  s.value,
+  r.value,
+  h.value,
+  cellSize.value,
+  cellsH.value,
+  cellsW.value,
+  time.value
+);
+
+automat.init();
+// automat.wavesBelousovZhabotinsky();
+
+function chooseReaction() {
+  let type = +document.querySelector("input[name=radio-cust]:checked").value;
+  switch (type) {
+    case 1:
+      automat.wavesBelousovZhabotinsky();
+      break;
+    case 2:
+      automat.oneWave();
+      break;
+    case 3:
+      automat.singleSleeveWave();
+      break;
+    case 4:
+      automat.doubleSleeveWave();
+      break;
+  }
+}
+
 // обработка перемещения панели управления
 function dragElement(el) {
   let pos1 = 0;
@@ -65,25 +103,21 @@ grid.addEventListener("click", () => {
   document.querySelector("#grid").hidden = grid.checked ? false : true;
 });
 
-start.addEventListener("click", () => {
-  automat.clearCanvas();
-  automat = new CellularAutomaton(
-    s.value,
-    r.value,
-    h.value,
-    cellSize.value,
-    cellsH.value,
-    cellsW.value,
-    time.value
-  );
+reset.addEventListener("click", () => {
+  automat.init();
+
+  automat.isStart = false;
+  start.value = "Запуск";
+  // automat.main();
 });
 
-let automat = new CellularAutomaton(
-  s.value,
-  r.value,
-  h.value,
-  cellSize.value,
-  cellsH.value,
-  cellsW.value,
-  time.value
-);
+step.addEventListener("click", () => {
+  automat.step();
+});
+
+start.onclick = () => {
+  start.value = automat.isStart ? "Запуск" : "Стоп";
+  automat.isStart = !automat.isStart;
+  chooseReaction();
+  automat.main();
+};

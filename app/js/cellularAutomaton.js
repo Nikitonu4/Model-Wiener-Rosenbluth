@@ -37,22 +37,24 @@ class CellularAutomaton {
     this.numberWidthCells = cellsW; // количество клеток по ширине
     this.time = time;
     this.t = 0;
-
+    this.size = {};
     this.grid = document.getElementById("grid").getContext("2d"); // канвас для сетки
     this.canvas = document.getElementById("canvas").getContext("2d");
     this.y = [];
     this.yy = [];
     this.u = [];
-
-    this.setSizeCanvases();
-    this.init();
-    this.createNullArrays();
+    this.isStart = false;
 
     // this.oneWave();
-    this.wavesBelousovZhabotinsky();
+    // this.wavesBelousovZhabotinsky();
     // this.singleSleeveWave();
     // this.doubleSleeveWave();
-    this.main();
+  }
+
+  clearAll() {
+    this.canvas.clearRect(0, 0, this.grid.width, this.grid.height);
+    this.grid.clearRect(0, 0, this.grid.width, this.grid.height);
+    this.init();
   }
 
   setSizeCanvases() {
@@ -79,12 +81,14 @@ class CellularAutomaton {
   }
 
   init() {
+    this.setSizeCanvases();
     this.grid.clearRect(0, 0, this.grid.width, this.grid.height);
     this.grid.width = this.cellSize * this.numberWidthCells;
     this.grid.height = this.cellSize * this.numberHeightCells;
 
     this.size = { x: this.numberWidthCells, y: this.numberHeightCells };
     this.gridDraw();
+    this.createNullArrays();
   }
 
   gridDraw() {
@@ -204,10 +208,12 @@ class CellularAutomaton {
   }
 
   main() {
-    this.step();
-    setTimeout(() => {
-      this.main();
-    }, this.time);
+    if (this.isStart) {
+      this.step();
+      setTimeout(() => {
+        this.main();
+      }, this.time);
+    }
   }
 
   // реакция Белоусова-Жаботинского

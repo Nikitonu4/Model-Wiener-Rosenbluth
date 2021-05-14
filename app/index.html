@@ -26,60 +26,48 @@
 
         <div class="control__panel-input">
           <p>s шагов до покоя</p>
-          <input class="input-form s" value=13 type="text" placeholder="13" />
+          <input class="input-form s" value=13 placeholder="13" type="number" step="1" min="1" max="200" />
         </div>
         <div class="control__panel-input">
           <p>r состояний возбуждения</p>
-          <input class="input-form r" value=6 type="text" placeholder="13" />
+          <input class="input-form r" value=6 placeholder="13" type="number" step="1" min="1" max="200" />
         </div>
         <div class="control__panel-input">
           <p>h пороговая концентрация активатора</p>
-          <input class="input-form h" value=5 type="text" placeholder="13" />
+          <input class="input-form h" value=5 placeholder="13" type="number" step="1" min="1" max="200" />
         </div>
         <div class="control__panel-input">
           <p>размер клеток</p>
-          <input class="input-form cell-size" value=8 type="text" placeholder="13" />
+          <input class="input-form cell-size" value=8 placeholder="13" type="number" step="1" min="1" max="50" />
         </div>
         <div class="control__panel-input">
           <p>Количество клеток по вертикали</p>
-          <input class="input-form cellsH" value=100 type="text" placeholder="13" />
+          <input class="input-form cellsH" value=100 placeholder="13" type="number" step="1" min="1" max="300" />
         </div>
         <div class="control__panel-input">
           <p>Количество клеток по горизонтали</p>
-          <input class="input-form cellsW" value=100 type="text" placeholder="13" />
+          <input class="input-form cellsW" value=100 placeholder="13" type="number" step="1" min="1" max="300" />
         </div>
         <div class="control__panel-input">
           <p>Интервал шага(в мс)</p>
-          <input class="input-form time" value=8 type="text" placeholder="13" />
+          <input class="input-form time" value=8 placeholder="13" type="number" step="1" min="1" max="2000" />
         </div>
         <div class="control__panel-radiogroup">
-          <div class="wrapper">
-            <input class="state" type="radio" name="app" id="a" value="a">
-            <label class="label" for="a">
-              <div class="indicator"></div>
-              <span class="text">реакция Белоусова-Жаботинского</span>
-            </label>
+          <div>
+            <input type="radio" name="radio-cust" class="radio-custom" id="belousov" checked="checked" value="1">
+            <label for="belousov" class="radio-custom-label">Реакция Белоусова-Жаботинского</label>
           </div>
-          <div class="wrapper">
-            <input class="state" type="radio" name="app" id="b" value="b">
-            <label class="label" for="b">
-              <div class="indicator"></div>
-              <span class="text">одиночная волна</span>
-            </label>
+          <div>
+            <input type="radio" name="radio-cust" class="radio-custom" id="onewave" value="2">
+            <label for="onewave" class="radio-custom-label">Одиночная волна</label>
           </div>
-          <div class="wrapper">
-            <input class="state" type="radio" name="app" id="c" value="c">
-            <label class="label" for="c">
-              <div class="indicator"></div>
-              <span class="text">однорукавная волна</span>
-            </label>
+          <div>
+            <input type="radio" name="radio-cust" class="radio-custom" id="single-slave-wave" value="3">
+            <label for="single-slave-wave" class="radio-custom-label">Однорукавная волна</label>
           </div>
-          <div class="wrapper">
-            <input class="state" type="radio" name="app" id="d" value="d">
-            <label class="label" for="d">
-              <div class="indicator"></div>
-              <span class="text">двурукавная волна</span>
-            </label>
+          <div>
+            <input type="radio" name="radio-cust" class="radio-custom" id="double-slave-wave" value="4">
+            <label for="double-slave-wave" class="radio-custom-label">Двурукавная волна</label>
           </div>
         </div>
         <div class="control__panel-checkboxes">
@@ -115,10 +103,10 @@
     </div>
 
   </div>
-  <!-- <script src="js/cellularAutomaton.js"></script> -->
+  <script src="js/cellularAutomaton.js"></script>
 
-  <!-- <script src="js/main.js"></script> -->
-  <script src="js/main.min.js"></script>
+  <script src="js/main.js"></script>
+  <!-- <script src="js/main.min.js"></script> -->
 </body>
 
 </html>
