@@ -37,18 +37,19 @@ class CellularAutomaton {
     this.numberWidthCells = cellsW; // количество клеток по ширине
     this.time = time;
     this.t = 0;
+
     this.size = {};
     this.grid = document.getElementById("grid").getContext("2d"); // канвас для сетки
     this.canvas = document.getElementById("canvas").getContext("2d");
+
     this.y = [];
     this.yy = [];
     this.u = [];
-    this.isStart = false;
 
-    // this.oneWave();
-    // this.wavesBelousovZhabotinsky();
-    // this.singleSleeveWave();
-    // this.doubleSleeveWave();
+    this.isStart = false;
+    this.isOneOsc = false;
+    this.isTwoOsc = false;
+    this.isObsticle = false;
   }
 
   clearAll() {
@@ -174,8 +175,9 @@ class CellularAutomaton {
 
   step() {
     this.t++;
-    // this.osc1(this.t);
-    // this.osc2(this.t);
+
+    if (this.isOneOsc) this.osc1(this.t);
+    if (this.isTwoOsc) this.osc2(this.t);
     for (let i = 1; i < this.size.x; i++) {
       for (let j = 1; j < this.size.y; j++) {
         if (this.y[i][j] > 0 && this.y[i][j] < this.s) {
@@ -202,8 +204,9 @@ class CellularAutomaton {
       }
     }
 
-    // this.obstacle();
-
+    if (this.isObsticle) {
+      this.obstacle();
+    }
     this.fillGrid();
   }
 
@@ -242,11 +245,11 @@ class CellularAutomaton {
 
   // двурукавная волна
   doubleSleeveWave() {
-    for (let j = 0; j < this.numberWidthCells; j++) {
+    for (let j = 0; j < this.numberWidthCells / 2; j++) {
       for (let i = 0; i < this.s; i++) {
-        this.y[40 + i][j] = i;
-        if (j > 40) {
-          this.y[40 + i][j] = 14 - i;
+        this.y[20 + i][j] = i;
+        if (j > 20) {
+          this.y[20 + i][j] = 14 - i;
         }
       }
     }
@@ -268,9 +271,9 @@ class CellularAutomaton {
 
   // препятствие
   obstacle() {
-    for (let i = 0; i < 70; i++) {
-      this.yy[i][60] = 0;
-      this.yy[i][61] = 0;
+    for (let i = 0; i < this.numberWidthCells; i++) {
+      this.yy[i][30] = 0;
+      this.yy[i][31] = 0;
     }
   }
 }

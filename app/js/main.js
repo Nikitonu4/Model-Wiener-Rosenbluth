@@ -1,7 +1,10 @@
+/* eslint-disable default-case */
 "use strict;";
 
 const controlPanel = document.querySelector(".control__panel");
 const grid = document.querySelector("#cb4");
+
+// берем основные характеристики
 const s = document.querySelector(".s");
 const r = document.querySelector(".r");
 const h = document.querySelector(".h");
@@ -10,16 +13,20 @@ const cellsH = document.querySelector(".cellsH");
 const cellsW = document.querySelector(".cellsW");
 const time = document.querySelector(".time");
 
-// const belousov = document.querySelector("#belousov");
-// const onewave = document.querySelector("#onewave");
-// const singleSlaveWave = document.querySelector("#single-slave-wave");
-// const doubleSlaveWave = document.querySelector("#double-slave-wave");
+const inputs = document.querySelector(".control__panel-inputs");
+const radioBox = document.querySelector(".control__panel-radiogroup");
 
+// добавляем оссциляторы или препятствие
+const oneOsc = document.querySelector("#oneOsc");
+const twoOsc = document.querySelector("#twoOsc");
+const obsticle = document.querySelector("#obsticle");
+
+// контрольное управление
 const step = document.querySelector(".step");
 const start = document.querySelector(".start");
 const reset = document.querySelector(".reset");
-let resetFlag = false;
 
+// создаем основной объект волны
 let automat = new CellularAutomaton(
   s.value,
   r.value,
@@ -30,9 +37,11 @@ let automat = new CellularAutomaton(
   time.value
 );
 
-automat.init();
-// automat.wavesBelousovZhabotinsky();
+automat.init(); // инициализируем
 
+chooseReaction();
+
+// выбираем необходимую реакцию
 function chooseReaction() {
   let type = +document.querySelector("input[name=radio-cust]:checked").value;
   switch (type) {
@@ -50,6 +59,65 @@ function chooseReaction() {
       break;
   }
 }
+
+obsticle.addEventListener("click", () => {
+  automat.isObsticle = obsticle.checked ? true : false;
+});
+
+oneOsc.addEventListener("click", () => {
+  automat.isOneOsc = oneOsc.checked ? true : false;
+});
+
+twoOsc.addEventListener("click", () => {
+  automat.isTwoOsc = twoOsc.checked ? true : false;
+});
+
+inputs.addEventListener("click", () => {
+  automat.s = s.value;
+  automat.r = r.value;
+  automat.h = h.value;
+  automat.cellSize = cellSize.value;
+  automat.cellsH = cellsH.value;
+  automat.cellsW = cellsW.value;
+  automat.time = time.value;
+});
+
+radioBox.addEventListener("click", () => {
+  start.value = "Запуск";
+  automat.isStart = false;
+  automat.init();
+  chooseReaction();
+});
+
+grid.addEventListener("click", () => {
+  document.querySelector("#grid").hidden = grid.checked ? false : true;
+});
+
+step.addEventListener("click", () => {
+  start.value = "Запуск";
+  automat.isStart = false;
+  automat.step();
+});
+
+start.onclick = () => {
+  start.value = automat.isStart ? "Запуск" : "Стоп";
+  automat.isStart = !automat.isStart;
+  automat.s = s.value;
+  automat.r = r.value;
+  automat.h = h.value;
+  automat.cellSize = cellSize.value;
+  automat.cellsH = cellsH.value;
+  automat.cellsW = cellsW.value;
+  automat.time = time.value;
+  automat.main();
+};
+
+reset.addEventListener("click", () => {
+  automat.isStart = false;
+  automat.init();
+  chooseReaction();
+  start.value = "Запуск";
+});
 
 // обработка перемещения панели управления
 function dragElement(el) {
@@ -96,28 +164,4 @@ function dragElement(el) {
     document.onmousemove = null;
   }
 }
-
 dragElement(controlPanel);
-
-grid.addEventListener("click", () => {
-  document.querySelector("#grid").hidden = grid.checked ? false : true;
-});
-
-reset.addEventListener("click", () => {
-  automat.init();
-
-  automat.isStart = false;
-  start.value = "Запуск";
-  // automat.main();
-});
-
-step.addEventListener("click", () => {
-  automat.step();
-});
-
-start.onclick = () => {
-  start.value = automat.isStart ? "Запуск" : "Стоп";
-  automat.isStart = !automat.isStart;
-  chooseReaction();
-  automat.main();
-};
