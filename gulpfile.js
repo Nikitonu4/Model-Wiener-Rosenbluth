@@ -9,7 +9,6 @@ del = require("del");
 function scripts() {
   // работа с js файлами
   return src([
-    "node_modules/jquery/dist/jquery.js", //выбираем jquery библиотеку
     "app/js/cellularAutomaton.js", // класс клеточного автомата
     "app/js/main.js", // выбираем основной файл main.js
     // выбираем js для фона
