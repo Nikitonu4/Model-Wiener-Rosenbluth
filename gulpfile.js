@@ -31,7 +31,11 @@ function browsersync() {
 
 function styles() {
   // конвертирует из scss в css
-  return src(["app/scss/_nullstyle.scss", "app/scss/style.scss"])
+  return src([
+    "app/scss/_nullstyle.scss",
+    "app/scss/style.scss",
+    "app/scss/adaptive.scss",
+  ])
     .pipe(concat("style.min.css"))
     .pipe(scss({ outputStyle: "compressed" }))
     .pipe(

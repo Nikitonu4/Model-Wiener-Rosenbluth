@@ -1,0 +1,55 @@
+/* lg-размер (<=1199px) */
+@media (max-width: 1199px) {
+  html,
+  body {
+    font-size: 12px;
+  }
+
+  /* CSS для ширины от 992px до 1199px */
+}
+
+@media (max-height: 900px) {
+  html,
+  body {
+    font-size: 12px;
+  }
+
+  .control__panel-input {
+    .input-form {
+      height: 10px;
+    }
+  }
+  .control__panel-radiogroup {
+    .radio-custom-label {
+      height: 33px;
+    }
+    .radio-custom + {
+      .radio-custom-label:before {
+        width: 20px;
+        height: 20px;
+      }
+    }
+  }
+
+  .control__panel-buttons {
+    input.button {
+      padding: 5px;
+    }
+  }
+  /* CSS для ширины от 992px до 1199px */
+}
+
+/* md-размер (<=991px) */
+@media (max-width: 991px) {
+  /* CSS для ширины от 768px до 991px */
+}
+
+/* sm-размер (<=768px) */
+@media (max-width: 767px) {
+  /* CSS для ширины от 576px до 767px */
+}
+
+/* xs-размер (<=575px) */
+@media (max-width: 575px) {
+  /* CSS для ширины до 575px (включительно) */
+}
