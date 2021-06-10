@@ -29,9 +29,11 @@ class CellularAutomaton {
     cellsW = 200,
     time = 5
   ) {
+    // основные параметры модели
     this.s = s;
     this.r = r;
     this.h = h;
+    // вид
     this.cellSize = cellSize; // размер клетки
     this.numberHeightCells = cellsH; // количество клеток по высоте
     this.numberWidthCells = cellsW; // количество клеток по ширине
@@ -42,10 +44,12 @@ class CellularAutomaton {
     this.grid = document.getElementById("grid").getContext("2d"); // канвас для сетки
     this.canvas = document.getElementById("canvas").getContext("2d");
 
+    // массивы с состоянием автоволны
     this.y = [];
     this.yy = [];
     this.u = [];
 
+    // чекеры
     this.isStart = false;
     this.isOneOsc = false;
     this.isTwoOsc = false;

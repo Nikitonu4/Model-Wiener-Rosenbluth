@@ -39,10 +39,15 @@
   /* CSS для ширины от 992px до 1199px */
 }
 
-/* md-размер (<=991px) */
-@media (max-width: 991px) {
-  /* CSS для ширины от 768px до 991px */
+@media (max-height: 900px) {
 }
+/* md-размер (<=991px) */
+// @media (max-height: 800px) {
+//   html {
+//     visibility: hidden;
+//   }
+//   /* CSS для ширины от 768px до 991px */
+// }
 
 /* sm-размер (<=768px) */
 @media (max-width: 767px) {
